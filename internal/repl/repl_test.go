@@ -1,4 +1,4 @@
-package main
+package repl
 
 import "testing"
 
@@ -35,7 +35,7 @@ func TestCleanInput(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run("cleanInput", func(t *testing.T) {
-			result := cleanInput(tc.input)
+			result := CleanInput(tc.input)
 			t.Log(result, tc.expected)
 
 			if len(result) != len(tc.expected) {
