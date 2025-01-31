@@ -28,14 +28,13 @@ func CreateCache(duration time.Duration) *Cache {
 }
 
 func (c Cache) Add(key string, value []byte) {
-	defer log.Printf("New record has been added to cache with key: %s.\n", key)
-
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 	c.records[key] = cacheRecord{
 		createdAt: time.Now(),
 		value:     value,
 	}
+	log.Printf("New record has been added to cache with key: %s.\n", key)
 }
 
 func (c Cache) Get(key string) (data []byte, wasFound bool) {
@@ -63,6 +62,7 @@ func (c Cache) reap(timestamp time.Time, duration time.Duration) {
 	for key, record := range c.records {
 		if timestamp.Add(duration).After(record.createdAt) {
 			delete(c.records, key)
+			log.Printf("Deleted cached data for key: %s\n", key)
 		}
 	}
 }
