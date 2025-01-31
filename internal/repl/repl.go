@@ -5,40 +5,36 @@ import (
 	"fmt"
 	"os"
 	"strings"
-
-	"github.com/volcente/pokedexcli/internal/commands"
 )
 
-func CleanInput(text string) []string {
-	lowercased := strings.ToLower(text)
-	return strings.Fields(lowercased)
-}
-
-func RunRepl() {
+func RunRepl(config *Config) {
 	scanner := bufio.NewScanner(os.Stdin)
-	mapConfig := commands.MapConfig{}
-
 	for {
 		fmt.Print("Pokedex > ")
 		if ok := scanner.Scan(); !ok {
 			return
 		}
 
-		input := CleanInput(scanner.Text())
+		input := cleanInput(scanner.Text())
 		if len(input) == 0 {
 			continue
 		}
 		commandName := input[0]
 
-		command, exists := commands.GetCommands()[commandName]
+		command, exists := getCommands()[commandName]
 		if !exists {
 			fmt.Println("Unknown command.")
 			continue
 		}
 
-		err := command.Callback(&mapConfig)
+		err := command.Callback(config)
 		if err != nil {
 			fmt.Println(err)
 		}
 	}
+}
+
+func cleanInput(text string) []string {
+	lowercased := strings.ToLower(text)
+	return strings.Fields(lowercased)
 }

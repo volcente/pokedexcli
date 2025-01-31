@@ -1,13 +1,13 @@
-package commands
+package repl
 
 import "fmt"
 
-func helpCommand(mapConfig *MapConfig) error {
+func helpCommand(mapConfig *Config) error {
 	fmt.Println("")
 	fmt.Println("Welcome to the Pokedex!")
 	fmt.Println("Usage:")
 	fmt.Println("")
-	for _, command := range GetCommands() {
+	for _, command := range getCommands() {
 		fmt.Printf("%s: %s\n", command.Name, command.Description)
 	}
 	fmt.Println("")

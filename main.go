@@ -1,7 +1,15 @@
 package main
 
-import "github.com/volcente/pokedexcli/internal/repl"
+import (
+	"time"
+
+	"github.com/volcente/pokedexcli/internal/pokeapi"
+	"github.com/volcente/pokedexcli/internal/repl"
+)
 
 func main() {
-	repl.RunRepl()
+	apiClient := pokeapi.NewClient(5*time.Second, 5*time.Minute)
+	config := repl.NewConfig(apiClient)
+
+	repl.RunRepl(&config)
 }
