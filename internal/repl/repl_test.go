@@ -35,7 +35,7 @@ func TestCleanInput(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run("cleanInput", func(t *testing.T) {
-			result := CleanInput(tc.input)
+			result := cleanInput(tc.input)
 			t.Log(result, tc.expected)
 
 			if len(result) != len(tc.expected) {

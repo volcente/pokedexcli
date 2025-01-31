@@ -1,17 +1,12 @@
-package commands
+package repl
 
 type cliCommand struct {
 	Name        string
 	Description string
-	Callback    func(mapConfig *MapConfig) error
+	Callback    func(config *Config) error
 }
 
-type MapConfig struct {
-	NextUrl     *string
-	PreviousUrl *string
-}
-
-func GetCommands() map[string]cliCommand {
+func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"map": {
 			Name:        "map",
