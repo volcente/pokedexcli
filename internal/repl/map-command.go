@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func mapCommand(config *Config) error {
+func mapCommand(config *Config, commandArgs ...string) error {
 	responseBody, err := config.pokeClient.GetLocationAreas(config.nextLocationsURL)
 	if err != nil {
 		return err
