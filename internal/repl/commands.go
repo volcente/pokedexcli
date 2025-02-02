@@ -13,10 +13,25 @@ func getCommands() map[string]cliCommand {
 			Description: "Attemts to catch a pokemon.",
 			Command:     catchCommmand,
 		},
+		"exit": {
+			Name:        "exit",
+			Description: "Exits the Pokedex.",
+			Command:     exitCommand,
+		},
 		"explore": {
 			Name:        "explore",
 			Description: "Displays available pokemon in the given location.",
 			Command:     exploreCommand,
+		},
+		"help": {
+			Name:        "help",
+			Description: "Displays a help message.",
+			Command:     helpCommand,
+		},
+		"inspect": {
+			Name:        "inspect",
+			Description: "Display Pokemon information.",
+			Command:     inspectCommand,
 		},
 		"map": {
 			Name:        "map",
@@ -27,16 +42,6 @@ func getCommands() map[string]cliCommand {
 			Name:        "mapb",
 			Description: "Displays 20 previous location areas in the Pokemon world.",
 			Command:     mapBackCommand,
-		},
-		"help": {
-			Name:        "help",
-			Description: "Displays a help message.",
-			Command:     helpCommand,
-		},
-		"exit": {
-			Name:        "exit",
-			Description: "Exits the Pokedex.",
-			Command:     exitCommand,
 		},
 	}
 }
