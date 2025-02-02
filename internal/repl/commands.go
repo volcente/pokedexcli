@@ -43,5 +43,10 @@ func getCommands() map[string]cliCommand {
 			Description: "Displays 20 previous location areas in the Pokemon world.",
 			Command:     mapBackCommand,
 		},
+		"pokedex": {
+			Name:        "pokedex",
+			Description: "Displays all caught pokemons.",
+			Command:     pokedexCommand,
+		},
 	}
 }
