@@ -3,6 +3,7 @@ package repl
 import "github.com/volcente/pokedexcli/internal/pokeapi"
 
 type Config struct {
+	userPokemons     map[string]pokeapi.Pokemon
 	pokeClient       pokeapi.Client
 	nextLocationsURL *string
 	prevLocationsURL *string
@@ -10,6 +11,7 @@ type Config struct {
 
 func NewConfig(pokeClient pokeapi.Client) Config {
 	return Config{
-		pokeClient: pokeClient,
+		pokeClient:   pokeClient,
+		userPokemons: map[string]pokeapi.Pokemon{},
 	}
 }
