@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func mapBackCommand(config *Config) error {
+func mapBackCommand(config *Config, commandArgs ...string) error {
 	if config.prevLocationsURL == nil {
 		fmt.Println("You're on the first page.")
 		return nil

@@ -20,6 +20,7 @@ func RunRepl(config *Config) {
 			continue
 		}
 		commandName := input[0]
+		commandArguments := input[1:]
 
 		command, exists := getCommands()[commandName]
 		if !exists {
@@ -27,7 +28,7 @@ func RunRepl(config *Config) {
 			continue
 		}
 
-		err := command.Callback(config)
+		err := command.Command(config, commandArguments...)
 		if err != nil {
 			fmt.Println(err)
 		}
